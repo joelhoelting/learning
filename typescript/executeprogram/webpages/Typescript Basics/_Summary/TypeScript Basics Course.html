@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html class="font-sans mode-dark" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>TypeScript Basics Course</title>
+        <meta name="description" content="TypeScript Basics: Static types and the TypeScript language from the ground up.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Execute Program">
+<meta name="twitter:description" content="Learn it. Code it. Remember it.">
+<meta name="twitter:image" content="https://www.executeprogram.com/images/twitter-card.png">
+        <meta property="og:title" content="Execute Program">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.executeprogram.com/courses/typescript-basics">
+<meta property="og:image" content="https://www.executeprogram.com/images/twitter-card.png">
+        <meta name="execprog-client-version" content="a831bb5c2f0473606351ad14c0b4493bc7086f029e19273bffd025af8d029b8d">
+        <meta name="robots" content="index, follow">
+        <link rel="prefetch" as="fetch" crossorigin="" href="https://www.executeprogram.com/dist/sql-wasm-1.4.2.wasm">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-Regular-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-SemiBold-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-Italic-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/Inconsolata-dz-ep.woff2">
+
+        <link rel="stylesheet" media="all" href="TypeScript%20Basics%20Course_files/application.7b56579413a396ad4b75c32392fd1277e03f03872e505c38.css">
+        <link rel="alternate" type="application/rss+xml" title="Execute Program Blog RSS Feed" href="https://www.executeprogram.com/blog/feed.rss">
+        <script>window.USER = {"kind":"authenticated","id":29772,"email":"joelhoelting@protonmail.com","showOverlays":false}</script>
+        <script type="module" src="TypeScript%20Basics%20Course_files/app.ZSUGA73M.js"></script>
+      <link rel="canonical" href="https://www.executeprogram.com//courses/typescript-basics"></head>
+      <body class="tone-neutral bg-back flex min-h-full text-base w-full">
+        <div class="App flex flex-auto justify-center"><a class="
+        tone-accent tone-as-loud bg-front text-strong
+        absolute focusable font-bold inline-block no-underline
+        transition-all duration-150 ease-in-out
+        px-4 py-2 rounded-b -top-12 type-body-sm z-10
+        focus:top-0 focus:shadow-xl
+      " href="#content">Skip to main content →</a><div class="flex flex-col w-full"><section class="false tone-neutral bg-base text-base border-base border-b"><div class="flex justify-between items-stretch"><a href="https://www.executeprogram.com/" class="p-4"><img alt="Execute Program" class="align-baseline block nav-logo" src="TypeScript%20Basics%20Course_files/logo.svg" width="128"></a><div class="flex items-stretch"><div><div class="flex items-center h-full -space-x-6"><div class="flex items-center p-2 mr-2"><span class="flex items-center"><a href="https://www.executeprogram.com/courses" class="
+          bg-transparent focusable rounded-sm
+          text-base type-body-sm
+          hover:bg-front hover:text-strong
+          active:bg-front active:text-strong
+          inline
+          no-underline
+          mr-2
+        "><span class="flex items-center"><span class="inline-block p-2">Courses</span></span></a></span></div><nav aria-label="Account Navigation" class="
+      flex items-center relative h-full
+      false
+    " role="navigation"><div class="h-full max-w-12 flex"><button aria-controls="account-nav-links" aria-expanded="false" aria-label="Toggle Account Navigation" class="
+      text-strong
+      false
+      hover:bg-front hover:text-strong
+      focusable flex items-center pointer p-4
+      relative type-body-sm z-20
+    " type="button"><svg aria-label="Menu Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Menu Icon</title><g aria-hidden="true"><path d="M.75 20.25h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 1 0 0 1.5zm0-7h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 1 0 0 1.5zm0-7h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 0 0 0 1.5z"></path></g></svg></button></div><div class="
+      border-b border-l border-t border-base
+      absolute bg-base min-w-[12rem] py-2 right-0
+      rounded-bl-lg shadow-lg space-y-0.5 top-full w-full z-10
+    " id="account-nav-links" hidden=""><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/courses"><span class="inline-flex w-4 pt-1"><svg aria-label="Course Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Course Icon</title><g aria-hidden="true"><path d="M11.647 3.088a.75.75 0 0 1 .706 0l11.25 6a.75.75 0 0 1 0 1.324l-4.853 2.587v3.751a.75.75 0 0 1-.22.53C16.4 19.41 14.22 20.5 12 20.5c-2.22 0-4.4-1.09-6.53-3.22a.75.75 0 0 1-.21-.412l-.01-.118v-3.751l-1-.533v7.284a.75.75 0 0 1-.648.743L3.5 20.5a.75.75 0 0 1-.743-.648l-.007-.102v-8.084L.397 10.412A.75.75 0 0 1 .298 9.15l.1-.063zM17.25 13.8l-4.897 2.613a.75.75 0 0 1-.706 0L6.75 13.799v2.635l.035.035c1.696 1.62 3.351 2.45 4.972 2.525L12 19c1.617 0 3.269-.752 4.96-2.294l.29-.273v-2.634zM12 4.599L2.342 9.75l1.328.708 8.2-1.447a.75.75 0 0 1 .36 1.453l-.1.025-6.314 1.114L12 14.9l9.657-5.15L12 4.599z"></path></g></svg></span><span class="inline-block">Courses</span></a></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/why-ep"><span class="inline-flex w-4 pt-1"><svg aria-label="Hint Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Hint Icon</title><g aria-hidden="true"><path d="M12 0a12 12 0 110 24 12 12 0 010-24zm0 1.5a10.5 10.5 0 100 21 10.5 10.5 0 000-21zm-.3 15.32c.92 0 1.33.48 1.33 1.2v.28c0 .72-.41 1.2-1.32 1.2-.9 0-1.32-.48-1.32-1.2v-.28c0-.72.41-1.2 1.32-1.2zm.46-12.32c2.66 0 4.34 1.54 4.34 3.93 0 2.66-2.07 3.9-3.97 4.26v2.24h-1.66v-3.4c2.35-.11 3.77-1.15 3.77-2.9v-.29c0-1.4-1.01-2.32-2.54-2.32-1.66 0-2.66 1.04-3 2.43l-1.6-.58a4.55 4.55 0 014.66-3.37z"></path></g></svg></span><span class="inline-block">Why EP?</span></a></div><div><div class="border-base border-b my-2"></div></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><button class="
+        bg-transparent cursor-pointer focusable-text inline p-0 underline
+        no-underline space-x-2 py-1 px-4 flex w-full
+      " type="button"><span class="inline-flex w-4 pt-1"><svg aria-label="Refresh Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Refresh Icon</title><g aria-hidden="true"><path d="M12 4a7.99 7.99 0 0 1 6.5 3.335l-.001-2.515a.75.75 0 1 1 1.5 0v4.429a.75.75 0 0 1-.75.75H14.82a.75.75 0 1 1 0-1.5l2.657-.001A6.5 6.5 0 1 0 18.424 13a.76.76 0 0 1 .756-.751.75.75 0 0 1 .75.75A7.988 7.988 0 0 1 12 20a8 8 0 1 1 0-16z"></path></g></svg></span><span class="inline-block">Toggle Dark Mode</span></button></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/faq"><span class="inline-flex w-4 pt-1"></span><span class="inline-block">FAQ</span></a></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/blog"><span class="inline-flex w-4 pt-1"></span><span class="inline-block">Blog</span></a></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://twitter.com/exec_prog"><span class="inline-flex w-4 pt-1"></span><span class="inline-block">Twitter</span></a></div><div><div class="border-base border-b my-2"></div></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/account"><span class="inline-flex w-4 pt-1"><svg aria-label="Avatar Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Avatar Icon</title><g aria-hidden="true"><path d="M11.752 14.5c4.262 0 7.905 2.76 8.731 6.592a.75.75 0 1 1-1.466.316C18.344 18.288 15.326 16 11.752 16c-3.587 0-6.605 2.282-7.268 5.406a.75.75 0 1 1-1.467-.312c.815-3.837 4.46-6.594 8.735-6.594zM11.75 2c3.032 0 5.5 2.468 5.5 5.5 0 3.031-2.468 5.5-5.5 5.5a5.507 5.507 0 0 1-5.5-5.5c0-3.032 2.468-5.5 5.5-5.5zm.001 1.5c-2.205 0-4 1.795-4 4s1.795 4 4 4 4-1.795 4-4-1.795-4-4-4z"></path></g></svg></span><span class="inline-block">Your Account</span></a></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><button class="
+        bg-transparent cursor-pointer focusable-text inline p-0 underline
+        no-underline space-x-2 py-1 px-4 flex w-full
+      " type="button"><span class="inline-flex w-4 pt-1"><svg aria-label="Feedback Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Feedback Icon</title><g aria-hidden="true"><path d="M20.5 3.5A2.5 2.5 0 0 1 23 6v12a2.5 2.5 0 0 1-2.5 2.5h-4.879L12 24l-3.621-3.5H3.5A2.5 2.5 0 0 1 1 18V6a2.5 2.5 0 0 1 2.5-2.5h17zm0 1.5h-17l-.117.007A1 1 0 0 0 2.5 6v12l.007.117A1 1 0 0 0 3.5 19h5.086l.131.009a1 1 0 0 1 .576.284L12 22l2.707-2.707.1-.087a1 1 0 0 1 .607-.206H20.5l.117-.007A1 1 0 0 0 21.5 18V6l-.007-.117A1 1 0 0 0 20.5 5zM7 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"></path></g></svg></span><span class="inline-block">Give Feedback</span></button></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/logout"><span class="inline-flex w-4 pt-1"><svg aria-label="Log Out Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Log Out Icon</title><g aria-hidden="true"><path d="M11.8 2c.397 0 .72.353.72.75s-.323.75-.72.75H4.166c-.4 0-.667.425-.667.826V19.84c0 .397.265.66.661.66h15.52c.397 0 .819-.263.819-.66v-7.63c0-.397.353-.76.75-.76s.75.363.75.76v7.63c0 1.191-1.128 2.16-2.319 2.16H4.16C2.97 22 2 21.031 2 19.84V4.326C2 3.132 2.972 2 4.166 2zm9.248 0c.166 0 .32.054.445.146l.052.042.05.05.031.035a.746.746 0 0 1 .172.568v4.752a.75.75 0 0 1-1.5 0l.002-3.022-9.02 9.018a.75.75 0 0 1-.984.067l-.076-.067a.75.75 0 0 1-.073-.977l.073-.084 9.029-9.027-3.044-.001a.75.75 0 1 1 0-1.5h4.843z"></path></g></svg></span><span class="inline-block">Log Out</span></a></div></div></div></nav></div></div></div></div></section><main aria-label="Main Content" class="bg-back flex-grow" id="content" role="main"><section class="false tone-neutral bg-back text-base overflow-hidden relative select-none"><svg width="1200" height="400" preserveAspectRatio="xMaxYMid slice" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" role="img" class="absolute h-full left-0 top-0 w-full"><title>Course banner</title><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient-typescript-basics-banner"><stop stop-color="#0F0840" offset="0%"></stop><stop stop-color="#080422" offset="100%"></stop></linearGradient></defs><g aria-hidden="true"><path fill="url(#gradient-typescript-basics-banner)" d="M0 0h1200v400H0z"></path><g fill="#2C2D81" transform="rotate(8) scale(2.25) translate(200, -50)" font-family="Inconsolata-dz-ep, Inconsolata-Regular, Inconsolata, monospace" font-size="16" font-weight="normal" opacity="0.5"><text><tspan x="100" y="0">function first&lt;T&gt;(elements: Array&lt;T&gt;): T {</tspan><tspan x="100" y="24">  return elements[0];</tspan><tspan x="100" y="48">}</tspan><tspan x="100" y="72"></tspan><tspan x="100" y="96">type First&lt;T&gt; = (elements: Array&lt;T&gt;) =&gt; T;</tspan><tspan x="100" y="120"></tspan><tspan x="100" y="144">const firstString: First&lt;string&gt; = first;</tspan><tspan x="100" y="168">firstString(['a', 'b', 'c']);</tspan></text></g><g fill="#FFF" transform="translate(1000, 100)" class="hidden lg:block"><path d="M57.847 100.485v42.5h85v-85h-85v42.5zm68.415-3.152c2.124.536 3.743 1.487 5.229 3.042.77.83 1.91 2.344 2.004 2.706.026.107-3.61 2.573-5.813 3.953-.08.054-.398-.295-.756-.83-1.075-1.582-2.203-2.265-3.928-2.386-2.535-.174-4.167 1.166-4.154 3.404 0 .656.093 1.045.358 1.58.558 1.167 1.593 1.863 4.844 3.284 5.985 2.6 8.546 4.314 10.139 6.753 1.778 2.72 2.176 7.061.969 10.29-1.327 3.511-4.619 5.896-9.25 6.687-1.433.255-4.83.214-6.37-.067-3.357-.603-6.542-2.278-8.506-4.475-.77-.858-2.27-3.096-2.177-3.257.04-.053.385-.267.77-.495a748.62 748.62 0 0 0 3.105-1.81l2.402-1.406.505.75c.703 1.086 2.242 2.573 3.171 3.069 2.668 1.42 6.33 1.219 8.135-.416.77-.71 1.088-1.447 1.088-2.532 0-.978-.12-1.407-.623-2.144-.65-.938-1.978-1.729-5.747-3.377-4.313-1.876-6.17-3.041-7.869-4.89-.982-1.072-1.911-2.788-2.296-4.221-.318-1.193-.398-4.18-.146-5.387.89-4.207 4.034-7.142 8.573-8.013 1.473-.281 4.897-.174 6.343.188zm-19.442 3.125l.027 3.442h-11.08v31.085h-7.839V103.9h-11.08v-3.376c0-1.867.04-3.428.094-3.468.04-.054 6.784-.08 14.96-.067l14.878.04.04 3.429z"></path></g></g></svg><div class="container max-w-6xl mx-auto px-4 sm:px-8 pb-8 pt-8 relative"><div class="pr-16 sm:pr-32"><h1 class="mb-2 mt-0 text-strong type-h1">TypeScript Basics</h1><p class="max-w-3xl text-muted type-body-lg">Static types and the TypeScript language from the ground up.</p><p class="max-w-3xl text-muted type-body-sm">Other courses on TypeScript: <span><a href="https://www.executeprogram.com/courses/everyday-typescript">Everyday TypeScript</a>, </span><span><a href="https://www.executeprogram.com/courses/advanced-typescript">Advanced TypeScript</a></span>.</p></div></div></section><div class="container max-w-5xl mx-auto px-4 sm:px-8 flex flex-col-reverse lg:flex-row py-8"><section class="flex-grow"><div class="mt-4"><div class="space-y-8"><div class="space-y-4"><div class="space-y-2"><h2 class="text-strong type-h6"><svg aria-label="Unlocked Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    mr-2 text-muted top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Unlocked Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 2A3.75 3.75 0 0 1 16 7.25a.75.75 0 1 1-1.5 0A2.25 2.25 0 0 0 12.25 5h-.5A2.25 2.25 0 0 0 9.5 7.25l-.001 4.25H17.5v9h-11v-9h1.499L8 7.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005zM16 13H8v6h8v-6z"></path></g></svg>Ready To Go</h2><div class="text-base type-body-sm"><p> You have one task available. Good job keeping up with your reviews! </p></div></div><section><ul class="sm:-mr-4 flex flex-col sm:flex-row sm:flex-wrap list ml-0"><li class="flex mb-4 sm:pr-4 w-full sm:w-1/2 lg:w-1/3"><a class="
+      bg-base flex flex-col focusable group justify-between
+      no-underline p-4 rounded-lg shadow-lg w-full
+      hover:bg-front
+    " href="https://www.executeprogram.com/courses/typescript-basics/review" tabindex="0"><div><h6 class="text-muted type-body-xs uppercase">review</h6><h3 class="font-bold text-strong">20 code examples</h3><div class="text-muted type-body-xs">From "Functions", "Generic functions", "Generic arrays", "Operators", "Type unions", and 6 more lessons.<div class="mt-4"> 42 more examples to review after this group.</div></div></div><span class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-control text-control
+    px-4 py-2
+    text-md
+    
+    mt-4 w-max
+  "><span>Start Review</span><svg aria-label="Right Arrow Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    opacity-50 group-hover:opacity-100
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><g aria-hidden="true"><path d="M15.295 20.463a.75.75 0 0 1 0-1.061l6.138-6.137H.75a.75.75 0 0 1-.743-.648L0 12.515a.75.75 0 0 1 .648-.743l.102-.007h20.697l-6.152-6.152a.75.75 0 0 1 1.06-1.06l7.425 7.424a.747.747 0 0 1 .212.418l.007.066v.094l-.002.024a.746.746 0 0 1-.28.523l-7.361 7.36a.75.75 0 0 1-1.061 0z"></path></g></svg></span></a></li></ul></section></div><div class="space-y-4"><div class="space-y-2"><h2 class="text-strong type-h6"><svg aria-label="Unlocked Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    mr-2 text-muted top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Unlocked Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 2A3.75 3.75 0 0 1 16 7.25a.75.75 0 1 1-1.5 0A2.25 2.25 0 0 0 12.25 5h-.5A2.25 2.25 0 0 0 9.5 7.25l-.001 4.25H17.5v9h-11v-9h1.499L8 7.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005zM16 13H8v6h8v-6z"></path></g></svg>TypeScript Basics Extras</h2><div class="text-base type-body-sm"><p>You don't have to read these articles to complete any of the lessons, but you may find them helpful (now or later).</p></div></div><section><ul class="bg-base divide-y divide-base flex flex-col rounded-lg shadow-lg"><li><a class="
+      flex items-center justify-between px-4 py-3 sm:space-x-4
+      rounded-t-lg
+      
+      focusable group no-underline hover:bg-front
+    " href="https://www.executeprogram.com/courses/typescript-basics/articles/how-to-install-typescript" tabindex="0"><h3 class="text-strong font-bold">How to install TypeScript</h3><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">Read</span></a></li><li><a class="
+      flex items-center justify-between px-4 py-3 sm:space-x-4
+      
+      
+      focusable group no-underline hover:bg-front
+    " href="https://www.executeprogram.com/courses/typescript-basics/articles/how-to-use-typescript-in-node-js" tabindex="0"><h3 class="text-strong font-bold">How to use TypeScript in Node.js</h3><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">Read</span></a></li><li><a class="
+      flex items-center justify-between px-4 py-3 sm:space-x-4
+      
+      
+      focusable group no-underline hover:bg-front
+    " href="https://www.executeprogram.com/courses/typescript-basics/articles/is-typescript-better-than-javascript" tabindex="0"><h3 class="text-strong font-bold">Is TypeScript Better Than JavaScript?</h3><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">Read</span></a></li><li><a class="
+      flex items-center justify-between px-4 py-3 sm:space-x-4
+      
+      rounded-b-lg
+      focusable group no-underline hover:bg-front
+    " href="https://www.executeprogram.com/courses/typescript-basics/articles/how-to-convert-a-string-to-a-number-in-typescript" tabindex="0"><h3 class="text-strong font-bold">How to convert a string to a number in TypeScript</h3><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">Read</span></a></li></ul></section></div><div class="space-y-4"><div class="space-y-2"><h2 class="text-strong type-h6"><svg aria-label="Learned Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    mr-2 text-accent top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Learned Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-2.477 7.462a.75.75 0 0 0-1.06 0l-9.006 9.006-4.005-4.006a.75.75 0 0 0-1.06 1.061l4.004 4.005.354.354a1 1 0 0 0 1.414 0l.354-.354 9.005-9.005a.75.75 0 0 0 0-1.06z"></path></g></svg>Finished</h2><div class="text-base type-body-sm"><p> Tasks that you've finished. You can repeat them anytime. </p></div></div><section><ul class="bg-base divide-y divide-base flex flex-col rounded-lg shadow-lg"><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    rounded-t-lg
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/generic-function-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic function types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">48 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/undefined-in-arrays"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Undefined in arrays</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/generic-function-inference"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic function inference</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/parse-nullable-string"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Parse nullable string</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/nullability"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Nullability</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/object-type-holes"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Object type with holes</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/generic-object-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic object types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/name-property"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Name property</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/object-narrowing"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Object narrowing</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">52 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/writing-a-function-type"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Writing a function type</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/function-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Function types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/destructuring-literal-objects"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Destructuring with literal objects</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/literal-object-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Literal object types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/generic-first-with-narrowing"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic first with narrowing</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/has-logged-in"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Has logged in</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/conditional-narrowing"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Conditional narrowing</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">53 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/generic-length"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic length</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/generic-first-function"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic first function</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/generic-identity-function"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic identity function</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/generic-functions"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic functions</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/add-or-subtract-union"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Add or subtract with union</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/literal-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Literal types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/stringify"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Stringify</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/type-unions"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Type unions</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/object-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Object types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/tuple"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Select from tuple</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">54 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/type-syntax-is-consistent"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Type syntax is consistent</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/generic-arrays"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Generic arrays</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/tuples"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Tuples</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/return-type-inference"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Return type inference</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/syntax-error"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Syntax error</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/syntax-error-vs-type-error"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Syntax errors vs type errors</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/type-keyword"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Type keyword</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/array-identity"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Array identity</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/arrays"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Arrays</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/using-operators"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Using operators</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/add-or-subtract"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Add or subtract</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/pluralize"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Pluralize</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/functions"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Functions</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/inference"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Inference</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/javascript-builtins"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">JavaScript builtins</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/operators"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Operators</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/quizzes/type-error"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">quiz</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Type error</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li><span class="basis-full"></span><li><a class="
+    flex items-center justify-between px-4 py-3 sm:space-x-4
+    
+    rounded-b-lg
+   focusable group no-underline hover:bg-front" href="https://www.executeprogram.com/courses/typescript-basics/lessons/basic-types"><div class="
+      flex flex-1
+      xs-only:flex-col
+      sm:items-center sm:justify-between
+    "><h6 class="text-muted type-body-xs uppercase sm:flex-0 sm:w-16">lesson</h6><h3 class="
+        font-bold mr-4
+        sm:flex-1 sm:w-64
+        md:w-auto
+        text-strong
+      ">Basic types</h3><span class="
+        text-muted type-body-xs
+        sm:text-right sm:w-32
+        md:w-auto
+      ">55 days ago</span></div><span class="
+      text-muted type-body-xs underline
+      sm:flex-0 group-hover:text-accent
+    ">View</span></a></li></ul></section></div><div class="space-y-4"></div></div></div></section><section class="lg:border-l border-b lg:border-b-0 border-base flex-0 mb-8 lg:mb-0 lg:ml-8 pb-8 lg:pb-0 lg:pl-8 lg:w-72"><div class="lg:max-h-screen lg:overflow-y-auto lg:sticky lg:top-0 pt-4"><div><h3 class="type-h6 text-strong mb-8">Your Progress</h3><figure class="flex flex-row items-center mb-8 space-x-2"><svg class="block xs-only:mb-2 mr-2" height="64px" role="img" version="1.1" viewBox="0 0 64 64" width="64px" xmlns="http://www.w3.org/2000/svg"><title>100% Complete</title><circle aria-hidden="true" class="fill-none stroke-current tone-neutral tone-as-invert text-base" cx="32" cy="32" r="30.5"></circle><circle aria-hidden="true" class="
+        fill-none stroke-current
+        text-positive
+      " cx="32" cy="32" r="30.5" stroke-dasharray="191.63715186897738" stroke-dashoffset="0" stroke-linecap="round" stroke-width="3" transform="rotate(90, 32, 32)"></circle><text class="
+      fill-current font-bold font-mono text-lg
+      text-strong
+    "><tspan dy="5" x="32" y="32" text-anchor="middle">100%</tspan></text></svg><figcaption><h3 class="text-strong type-body">44 of 44 Tasks Learned</h3><h4 class="text-muted type-body-xs">172 of 172 Code Examples</h4></figcaption></figure><div class="flex flex-col sm:flex-row items-start"><figure class="w-full space-y-2"><svg class="max-w-full" height="80" role="img" viewBox="0 0 256 80" width="256" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Course Task Breakdown</title><desc>An infographic of this course's tasks grouped by status</desc><defs><g id="learned"><g transform="scale(0.66667)"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-2.477 7.462a.75.75 0 0 0-1.06 0l-9.006 9.006-4.005-4.006a.75.75 0 0 0-1.06 1.061l4.004 4.005.354.354a1 1 0 0 0 1.414 0l.354-.354 9.005-9.005a.75.75 0 0 0 0-1.06z"></path></g></g><g id="learning"><g transform="scale(0.66667)"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zM7 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path></g></g><g id="locked"><g transform="scale(0.66667)"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 4A3.75 3.75 0 0 1 16 9.25v.25h1.5v9h-11v-9H8v-.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005h.5zM16 11H8v6h8v-6zm-3.75-4h-.5l-.154.005a2.25 2.25 0 0 0-2.09 2.084L9.5 9.25v.25h5v-.25a2.25 2.25 0 0 0-2.096-2.245L12.25 7z"></path></g></g><g id="unlocked"><g transform="scale(0.66667)"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 2A3.75 3.75 0 0 1 16 7.25a.75.75 0 1 1-1.5 0A2.25 2.25 0 0 0 12.25 5h-.5A2.25 2.25 0 0 0 9.5 7.25l-.001 4.25H17.5v9h-11v-9h1.499L8 7.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005zM16 13H8v6h8v-6z"></path></g></g></defs><use class="text-accent" fill="currentColor" transform="translate(0, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(20, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(40, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(60, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(80, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(100, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(120, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(140, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(160, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(180, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(200, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(220, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(240, 0)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(0, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(20, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(40, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(60, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(80, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(100, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(120, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(140, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(160, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(180, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(200, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(220, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(240, 20)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(0, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(20, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(40, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(60, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(80, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(100, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(120, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(140, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(160, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(180, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(200, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(220, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(240, 40)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(0, 60)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(20, 60)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(40, 60)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(60, 60)" xlink:href="#learned"></use><use class="text-accent" fill="currentColor" transform="translate(80, 60)" xlink:href="#learned"></use></svg><figcaption class="type-body-xs text-muted"><span class="block"><svg aria-label="Learned Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent mr-1
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Learned Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-2.477 7.462a.75.75 0 0 0-1.06 0l-9.006 9.006-4.005-4.006a.75.75 0 0 0-1.06 1.061l4.004 4.005.354.354a1 1 0 0 0 1.414 0l.354-.354 9.005-9.005a.75.75 0 0 0 0-1.06z"></path></g></svg>44 Learned Tasks</span><span class="block"><svg aria-label="Learning Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-muted mr-1
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Learning Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zM7 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path></g></svg>0 Active Tasks</span><span class="block"><svg aria-label="Unlocked Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-muted mr-1
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Unlocked Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 2A3.75 3.75 0 0 1 16 7.25a.75.75 0 1 1-1.5 0A2.25 2.25 0 0 0 12.25 5h-.5A2.25 2.25 0 0 0 9.5 7.25l-.001 4.25H17.5v9h-11v-9h1.499L8 7.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005zM16 13H8v6h8v-6z"></path></g></svg>0 Unlocked Tasks</span><span class="block"><svg aria-label="Locked Lesson Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-muted mr-1
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Locked Lesson Icon</title><g aria-hidden="true"><path d="M22 0a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h20zm-.5 1.5h-19a1 1 0 0 0-1 1v19a1 1 0 0 0 1 1h19a1 1 0 0 0 1-1v-19a1 1 0 0 0-1-1zm-9.25 4A3.75 3.75 0 0 1 16 9.25v.25h1.5v9h-11v-9H8v-.25a3.75 3.75 0 0 1 3.55-3.745l.2-.005h.5zM16 11H8v6h8v-6zm-3.75-4h-.5l-.154.005a2.25 2.25 0 0 0-2.09 2.084L9.5 9.25v.25h5v-.25a2.25 2.25 0 0 0-2.096-2.245L12.25 7z"></path></g></svg>0 Locked Tasks</span></figcaption></figure></div><div class="flex justify-end my-4"><button class="
+        bg-transparent cursor-pointer focusable-text inline p-0 underline
+        
+          focusable-text text-muted type-body-sm
+          hover:text-cautious
+        
+      " type="button">Reset Progress…</button></div></div></div></section></div><div class="reference tone-neutral"><button class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-transparent
+    px-4 py-2
+    text-md
+    flex-row-reverse space-x-reverse
+    bg-base hover:bg-front bottom-4 fixed right-4 shadow-lg z-50
+  " tabindex="0" type="button"><span>Show Reference</span><svg aria-label="Reference Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    opacity-50 group-hover:opacity-100
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Reference Icon</title><g aria-hidden="true"><path d="M16.5 0a1.5 1.5 0 0 1 1.06.44l3 3A1.5 1.5 0 0 1 21 4.5v18a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 22.5v-21A1.5 1.5 0 0 1 4.5 0zm-1.25 1.5H4.5v21h15V5.749L16 5.75a.75.75 0 0 1-.743-.648L15.25 5V1.5zm-2 16.5a.75.75 0 1 1 0 1.5h-6.5a.75.75 0 1 1 0-1.5h6.5zm3-3a.75.75 0 1 1 0 1.5h-9.5a.75.75 0 1 1 0-1.5h9.5zm.345-7.585l.181.186.818.873a1.5 1.5 0 0 1 .101 1.932l-.1.12-.819.873c-2.566 2.738-6.732 2.8-9.37.186l-.182-.186-.818-.873a1.5 1.5 0 0 1-.101-1.932l.1-.12.819-.873c2.566-2.738 6.732-2.8 9.37-.186zM8.49 8.45l-.173.176L7.5 9.5l.818.873c1.977 2.11 5.148 2.168 7.191.176l.173-.176.818-.873-.818-.873c-1.977-2.11-5.148-2.168-7.191-.176zm5.153-.78l.06.061a2.547 2.547 0 0 1 0 3.536 2.368 2.368 0 0 1-3.348.06l-.06-.06a2.547 2.547 0 0 1 0-3.536 2.368 2.368 0 0 1 3.348-.06zm-2.269 1.102a1.047 1.047 0 0 0-.093 1.348l.074.086.041.042a.868.868 0 0 0 1.228-.022c.363-.377.389-.958.078-1.363l-.078-.09-.022-.023a.868.868 0 0 0-1.228.022zM16.75 1.75v2.5l2.499-.001L16.75 1.75z"></path></g></svg></button></div></main><section class="tone-neutral false bg-back text-base"><footer aria-label="Site Footer" role="contentinfo" class="max-w-5xl mx-auto flex justify-between text-sm text-muted p-4"><nav class="flex"><a class="mr-8" href="mailto:contact@executeprogram.com">Contact</a><a class="mr-8" href="https://www.executeprogram.com/privacy">Privacy</a><a class="mr-8" href="https://twitter.com/exec_prog"><span class="block" style="padding-top: 3px;"><svg aria-label="Twitter Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Twitter Icon</title><g aria-hidden="true"><path d="M24 4.492c-.856.396-1.604.406-2.374.021.994-.599 1.048-1.026 1.411-2.16a9.706 9.706 0 01-3.101 1.176A4.818 4.818 0 0016.406 2c-2.673 0-4.866 2.182-4.866 4.856 0 .385.032.748.107 1.112a13.833 13.833 0 01-10.01-5.08c-.428.716-.642 1.55-.642 2.46 0 1.668.855 3.155 2.139 4.032A4.906 4.906 0 01.94 8.77v.064a4.833 4.833 0 003.893 4.749c-.716.214-1.465.214-2.203.085a4.888 4.888 0 004.545 3.38A9.68 9.68 0 010 19.07c2.139 1.39 4.706 2.181 7.455 2.181 8.93 0 13.818-7.4 13.818-13.829 0-.213 0-.427-.022-.641.963-.674 2.097-1.305 2.738-2.289H24z"></path></g></svg></span></a></nav><div class="text-right text-xs">© 2017-2023 <span class="block md:inline">Destroy All Software LLC</span></div></footer></section></div></div>
+      
+    </body></html>

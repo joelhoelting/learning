@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="font-sans mode-dark" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Async await Lesson</title>
+        <meta name="description" content="Learn programming tools like JavaScript, TypeScript, SQL, and regular expressions fast. Interactive lessons with real code examples.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Execute Program">
+<meta name="twitter:description" content="Learn it. Code it. Remember it.">
+<meta name="twitter:image" content="https://www.executeprogram.com/images/twitter-card.png">
+        <meta property="og:title" content="Execute Program">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.executeprogram.com/courses/everyday-typescript/lessons/async-await">
+<meta property="og:image" content="https://www.executeprogram.com/images/twitter-card.png">
+        <meta name="execprog-client-version" content="a831bb5c2f0473606351ad14c0b4493bc7086f029e19273bffd025af8d029b8d">
+        <meta name="robots" content="index, follow">
+        <link rel="prefetch" as="fetch" crossorigin="" href="https://www.executeprogram.com/dist/sql-wasm-1.4.2.wasm">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-Regular-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-SemiBold-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/IBMPlexSans-Italic-Latin1.woff2">
+<link rel="preload" as="font" crossorigin="" href="https://www.executeprogram.com/fonts/Inconsolata-dz-ep.woff2">
+
+        <link rel="stylesheet" media="all" href="Async%20await%20Lesson_files/application.7b56579413a396ad4b75c32392fd1277e03f03872e505c38.css">
+        <link rel="alternate" type="application/rss+xml" title="Execute Program Blog RSS Feed" href="https://www.executeprogram.com/blog/feed.rss">
+        <script>window.USER = {"kind":"authenticated","id":29772,"email":"joelhoelting@protonmail.com","showOverlays":false}</script>
+        <script type="module" src="Async%20await%20Lesson_files/app.ZSUGA73M.js"></script>
+      <link rel="canonical" href="https://www.executeprogram.com//courses/everyday-typescript/lessons/async-await"></head>
+      <body class="tone-neutral bg-back flex min-h-full text-base w-full">
+        <div class="App flex flex-auto justify-center"><div class="flex flex-col h-full terminal type-code w-full"><header class="
+    bg-base border-b border-base
+    divide-base divide-x flex justify-between sticky top-0 z-10
+  "><button aria-label="Back button" class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-transparent
+    px-4 py-2
+    text-md
+    
+    
+      border-0 border-base flex-0 items-center p-4 rounded-none
+      hover:bg-front hover:shadow-none active:bg-back
+    
+  " tabindex="0" type="button"><svg aria-label="Left Arrow Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Left Arrow Icon</title><g aria-hidden="true"><path d="M8.705 4.553a.75.75 0 0 1 0 1.06L2.567 11.75H23.25a.75.75 0 0 1 .743.648L24 12.5a.75.75 0 0 1-.75.75H2.553l6.152 6.152a.75.75 0 0 1-1.06 1.06L.22 13.039A.747.747 0 0 1 0 12.5l.005.09A.754.754 0 0 1 0 12.518V12.5a.765.765 0 0 1 .003-.064.746.746 0 0 1 .28-.523l7.361-7.36a.75.75 0 0 1 1.061 0z"></path></g></svg></button><div class="flex flex-grow items-center justify-between"><a href="https://www.executeprogram.com/" class="type-h6 flex leading-none flex-shrink-0 pl-2"><img src="Async%20await%20Lesson_files/logo-icon.svg" alt="Execute Program" aria-label="Logo" class="icon mx-2"></a><div class="flex flex-1 items-center justify-end p-3 space-x-2"></div></div><div><div class="flex items-center h-full -space-x-6"><nav aria-label="Account Navigation" class="
+      flex items-center relative h-full
+      false
+    " role="navigation"><div class="h-full max-w-12 flex"><button aria-controls="account-nav-links" aria-expanded="false" aria-label="Toggle Account Navigation" class="
+      text-strong
+      false
+      hover:bg-front hover:text-strong
+      focusable flex items-center pointer p-4
+      relative type-body-sm z-20
+    " type="button"><svg aria-label="Menu Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Menu Icon</title><g aria-hidden="true"><path d="M.75 20.25h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 1 0 0 1.5zm0-7h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 1 0 0 1.5zm0-7h22.5a.75.75 0 1 0 0-1.5H.75a.75.75 0 0 0 0 1.5z"></path></g></svg></button></div><div class="
+      border-b border-l border-t border-base
+      absolute bg-base min-w-[12rem] py-2 right-0
+      rounded-bl-lg shadow-lg space-y-0.5 top-full w-full z-10
+    " id="account-nav-links" hidden=""><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><button class="
+        bg-transparent cursor-pointer focusable-text inline p-0 underline
+        no-underline space-x-2 py-1 px-4 flex w-full
+      " type="button"><span class="inline-flex w-4 pt-1"><svg aria-label="Refresh Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Refresh Icon</title><g aria-hidden="true"><path d="M12 4a7.99 7.99 0 0 1 6.5 3.335l-.001-2.515a.75.75 0 1 1 1.5 0v4.429a.75.75 0 0 1-.75.75H14.82a.75.75 0 1 1 0-1.5l2.657-.001A6.5 6.5 0 1 0 18.424 13a.76.76 0 0 1 .756-.751.75.75 0 0 1 .75.75A7.988 7.988 0 0 1 12 20a8 8 0 1 1 0-16z"></path></g></svg></span><span class="inline-block">Toggle Dark Mode</span></button></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/courses"><span class="inline-flex w-4 pt-1"><svg aria-label="Course Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Course Icon</title><g aria-hidden="true"><path d="M11.647 3.088a.75.75 0 0 1 .706 0l11.25 6a.75.75 0 0 1 0 1.324l-4.853 2.587v3.751a.75.75 0 0 1-.22.53C16.4 19.41 14.22 20.5 12 20.5c-2.22 0-4.4-1.09-6.53-3.22a.75.75 0 0 1-.21-.412l-.01-.118v-3.751l-1-.533v7.284a.75.75 0 0 1-.648.743L3.5 20.5a.75.75 0 0 1-.743-.648l-.007-.102v-8.084L.397 10.412A.75.75 0 0 1 .298 9.15l.1-.063zM17.25 13.8l-4.897 2.613a.75.75 0 0 1-.706 0L6.75 13.799v2.635l.035.035c1.696 1.62 3.351 2.45 4.972 2.525L12 19c1.617 0 3.269-.752 4.96-2.294l.29-.273v-2.634zM12 4.599L2.342 9.75l1.328.708 8.2-1.447a.75.75 0 0 1 .36 1.453l-.1.025-6.314 1.114L12 14.9l9.657-5.15L12 4.599z"></path></g></svg></span><span class="inline-block">Courses</span></a></div><div><div class="border-base border-b my-2"></div></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/account"><span class="inline-flex w-4 pt-1"><svg aria-label="Settings Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Settings Icon</title><g aria-hidden="true"><path d="M8.155.001a2.71 2.71 0 0 1 2.007.894l.939 1.037a1.21 1.21 0 0 0 1.796.001l.939-1.041a2.718 2.718 0 0 1 2.009-.889 2.703 2.703 0 0 1 2.705 2.84l-.072 1.402c-.016.322.094.632.311.872a1.2 1.2 0 0 0 .837.397l.061.001.06-.001 1.4-.072c.048-.002.095-.004.143-.004a2.71 2.71 0 0 1 1.812 4.722l-1.042.939a1.206 1.206 0 0 0 0 1.794l1.042.94c.537.485.854 1.149.891 1.872a2.69 2.69 0 0 1-.694 1.954 2.704 2.704 0 0 1-1.811.888l-.189.007c-.051 0-.102-.001-.153-.004l-1.398-.072-.071-.002a1.204 1.204 0 0 0-1.198 1.272l.072 1.399a2.714 2.714 0 0 1-2.712 2.843 2.71 2.71 0 0 1-2.003-.891l-.941-1.043a1.209 1.209 0 0 0-1.795.001l-.938 1.043a2.714 2.714 0 0 1-3.825.198 2.702 2.702 0 0 1-.891-2.151l.072-1.4a1.2 1.2 0 0 0-.31-.87 1.197 1.197 0 0 0-.835-.396l-.033-.002-.03-.001c-.02 0-.04 0-.06.002l-1.401.072a2.708 2.708 0 0 1-1.951-4.717l1.041-.94a1.21 1.21 0 0 0-.001-1.795l-1.041-.939a2.714 2.714 0 0 1-.182-3.829 2.712 2.712 0 0 1 2.128-.883l1.404.072.068.002c.296 0 .582-.111.804-.312a1.206 1.206 0 0 0 .398-.964l-.072-1.4A2.713 2.713 0 0 1 8.155.001zm-.002 1.497l-.06.001a1.222 1.222 0 0 0-1.15 1.272l.072 1.399A2.709 2.709 0 0 1 4.17 7.019l-1.4-.072-.05-.001a1.21 1.21 0 0 0-.815 2.103l1.039.938a2.69 2.69 0 0 1 .89 2.149 2.692 2.692 0 0 1-.89 1.873l-1.041.94a1.206 1.206 0 0 0-.398.958 1.211 1.211 0 0 0 1.214 1.148l.056-.001 1.397-.072a2.069 2.069 0 0 1 .275 0 2.69 2.69 0 0 1 1.872.888c.485.537.732 1.23.696 1.952l-.072 1.401a1.206 1.206 0 0 0 1.207 1.27c.343 0 .67-.145.899-.399l.94-1.042a2.703 2.703 0 0 1 2.01-.892c.766 0 1.5.325 2.012.893l.94 1.042c.231.256.551.396.901.396l.056-.001a1.21 1.21 0 0 0 1.147-1.266l-.072-1.398a2.696 2.696 0 0 1 .89-2.15 2.715 2.715 0 0 1 1.953-.695l1.402.072.067.002c.344 0 .661-.142.893-.4a1.205 1.205 0 0 0-.087-1.707l-1.042-.941a2.688 2.688 0 0 1-.89-2.149 2.692 2.692 0 0 1 .89-1.873l1.042-.94c.273-.246.418-.597.399-.964a1.205 1.205 0 0 0-1.199-1.145l-.071.002-1.403.072a3.087 3.087 0 0 1-.275 0 2.691 2.691 0 0 1-1.873-.889 2.693 2.693 0 0 1-.697-1.954l.072-1.401a1.203 1.203 0 0 0-.395-.953 1.21 1.21 0 0 0-1.708.083l-.938 1.04a2.7 2.7 0 0 1-2.149.89 2.69 2.69 0 0 1-1.872-.89l-.94-1.038c-.23-.254-.557-.4-.899-.4zm3.846 5.25a5.256 5.256 0 0 1 5.25 5.25 5.256 5.256 0 0 1-5.25 5.25 5.256 5.256 0 0 1-5.25-5.25 5.256 5.256 0 0 1 5.25-5.25zm0 1.5a3.754 3.754 0 0 0-3.75 3.75 3.754 3.754 0 0 0 3.75 3.75 3.754 3.754 0 0 0 3.75-3.75 3.754 3.754 0 0 0-3.75-3.75z"></path></g></svg></span><span class="inline-block">Your Account</span></a></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><button class="
+        bg-transparent cursor-pointer focusable-text inline p-0 underline
+        no-underline space-x-2 py-1 px-4 flex w-full
+      " type="button"><span class="inline-flex w-4 pt-1"><svg aria-label="Feedback Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Feedback Icon</title><g aria-hidden="true"><path d="M20.5 3.5A2.5 2.5 0 0 1 23 6v12a2.5 2.5 0 0 1-2.5 2.5h-4.879L12 24l-3.621-3.5H3.5A2.5 2.5 0 0 1 1 18V6a2.5 2.5 0 0 1 2.5-2.5h17zm0 1.5h-17l-.117.007A1 1 0 0 0 2.5 6v12l.007.117A1 1 0 0 0 3.5 19h5.086l.131.009a1 1 0 0 1 .576.284L12 22l2.707-2.707.1-.087a1 1 0 0 1 .607-.206H20.5l.117-.007A1 1 0 0 0 21.5 18V6l-.007-.117A1 1 0 0 0 20.5 5zM7 10.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"></path></g></svg></span><span class="inline-block">Give Feedback</span></button></div></div><div><div class="
+      bg-transparent block cursor-pointer focusable rounded-sm
+      mx-2
+      text-base type-body-sm
+      hover:bg-front hover:text-strong
+      active:bg-front active:text-strong
+    "><a class="no-underline space-x-2 py-1 px-4 flex w-full" href="https://www.executeprogram.com/logout"><span class="inline-flex w-4 pt-1"><svg aria-label="Log Out Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    text-accent
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Log Out Icon</title><g aria-hidden="true"><path d="M11.8 2c.397 0 .72.353.72.75s-.323.75-.72.75H4.166c-.4 0-.667.425-.667.826V19.84c0 .397.265.66.661.66h15.52c.397 0 .819-.263.819-.66v-7.63c0-.397.353-.76.75-.76s.75.363.75.76v7.63c0 1.191-1.128 2.16-2.319 2.16H4.16C2.97 22 2 21.031 2 19.84V4.326C2 3.132 2.972 2 4.166 2zm9.248 0c.166 0 .32.054.445.146l.052.042.05.05.031.035a.746.746 0 0 1 .172.568v4.752a.75.75 0 0 1-1.5 0l.002-3.022-9.02 9.018a.75.75 0 0 1-.984.067l-.076-.067a.75.75 0 0 1-.073-.977l.073-.084 9.029-9.027-3.044-.001a.75.75 0 1 1 0-1.5h4.843z"></path></g></svg></span><span class="inline-block">Log Out</span></a></div></div></div></nav></div></div></header><main class="flex flex-grow items-center justify-center"><div class="box-content max-w-2xl mx-auto px-4 py-16 tall:pb-32 xtall:pb-64 space-y-8 w-full"><h1 class="text-strong type-h2">Everyday TypeScript: Async await</h1><div class="
+      copy relative tone-cautious
+      
+      bg-base block p-2 rounded-sm sm:rounded text-base
+      text-sm sm:text-md
+      sm:p-4
+      -mx-2 sm:-mx-4
+      mb-16
+    "><p>You already finished this lesson. You can read through it here,
+ or use the button below to repeat the whole lesson interactively.</p><button class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-control text-control
+    px-4 py-2
+    text-md
+    
+    
+  " tabindex="0" type="button"><span>Start Interactive Lesson</span></button></div><ul class="space-y-8"><li class="
+          step
+          finished-step
+        "><div class="mb-4 space-y-4"><div class="copy type-code "><p>JavaScript's async/await syntax lets us use promises, but with a more natural syntax.
+Like promises, async/await fits nicely into TypeScript's type system.
+When we await a <code>Promise&lt;T&gt;</code>, we get a value of type <code>T</code>.</p>
+</div></div></li><li class="
+          step
+          finished-step
+        "><div class="mb-4 space-y-4"><div class="copy type-code "><p>(Note that async functions always return promises.
+All of the examples in this lesson result in promises, which Execute Program represents as <code>{fulfilled: theValueHere}</code>.)</p>
+</div></div></li><li class="
+          step
+          finished-step
+        "><div class="Example"><div class="bg-base mb-8 -mx-4 p-4 md:rounded-md shadow"><div><div class="flex"><pre class="mr-2">&gt;</pre><pre class="cm-s-execprog"><span class="cm-keyword">async</span> <span class="cm-keyword">function</span> <span class="cm-def">returns5</span>() {
+  <span class="cm-keyword">const</span> <span class="cm-def">aPromise</span> <span class="cm-operator">=</span> <span class="cm-variable">Promise</span>.<span class="cm-property">resolve</span>(<span class="cm-number">5</span>);
+  <span class="cm-keyword">const</span> <span class="cm-def">aNumber</span>: <span class="cm-type">number</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable-2">aPromise</span>;
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">aNumber</span>;
+}
+
+<span class="cm-variable">returns5</span>();</pre></div></div><div><div aria-describedby="#hint-7" class="
+        cursor-pointer flex focusable group items-center
+        -m-1.5 p-1.5 rounded space-x-2
+        max-w-max
+      " tabindex="0"><h6 class="font-bold inline-block text-muted tracking-wider type-code-sm uppercase"><svg aria-label="Asyncronous Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    tone-cautious text-muted -mr-1 top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Asyncronous Icon</title><g aria-hidden="true"><g fill="none" fill-rule="evenodd"><path d="M13.5 18.5a9.2 9.2 0 115-12m-12.1 12a9.2 9.2 0 1112.1-4.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23.2 16.2c-.4 0-.7.4-.7.8v4.4l-8.3-8.2a.8.8 0 00-1-.1c-.3.3-.3.8 0 1v.1l8.2 8.3H17a.8.8 0 000 1.5h6.2l.5-.1.1-.2c.2-.1.2-.3.2-.5V17c0-.4-.3-.8-.8-.8z" fill="currentColor" fill-rule="nonzero"></path><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 3.8V10H5.2"></path></g></g></svg> Async Result:</h6></div><div aria-hidden="true" class="
+        max-w-xs tooltip tone-accent tone-as-loud bg-base text-base
+        z-10
+        hidden
+        
+      " data-show="false" id="hint-7" role="tooltip" style="position: absolute; inset: 0px auto auto 0px; transform: translate3d(629px, 854px, 0px);" data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom"><p class="flex flex-col"><strong class="text-strong">Asyncronous Result</strong><span>This result will wait up to <em>3000ms</em> for a response from the code before returning.</span></p><span class="tooltip-arrow" style="position: absolute; left: 0px; transform: translate3d(0px, 0px, 0px);"></span></div></div><div><button class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-control text-control
+    px-4 py-2
+    text-md
+    
+    mt-1
+  " tabindex="0" type="button"><span>Run Code</span><svg aria-label="Right Arrow Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    opacity-50 group-hover:opacity-100
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Right Arrow Icon</title><g aria-hidden="true"><path d="M15.295 20.463a.75.75 0 0 1 0-1.061l6.138-6.137H.75a.75.75 0 0 1-.743-.648L0 12.515a.75.75 0 0 1 .648-.743l.102-.007h20.697l-6.152-6.152a.75.75 0 0 1 1.06-1.06l7.425 7.424a.747.747 0 0 1 .212.418l.007.066v.094l-.002.024a.746.746 0 0 1-.28.523l-7.361 7.36a.75.75 0 0 1-1.061 0z"></path></g></svg></button></div></div><div class="mb-8"></div></div></li><li class="
+          step
+          finished-step
+        "><div class="mb-4 space-y-4"><div class="copy type-code "><p>Async functions must have a return type of <code>Promise&lt;T&gt;</code>.
+This makes sense if we think about it: an async function always returns a promise.
+If we give our async function a non-promise return type, that's a type error.</p>
+</div></div></li><li class="
+          step
+          finished-step
+        "><div class="Example"><div class="space-y-2"><div class="
+      bg-base -mx-4 p-4 text-base shadow
+      focus-within:shadow-lg
+      md:rounded-md
+    "><div class="flex"><pre class="mr-2">&gt;</pre><pre class="cm-s-execprog"><span class="cm-keyword">async</span> <span class="cm-keyword">function</span> <span class="cm-def">asyncDouble</span>(<span class="cm-def">x</span>: <span class="cm-type">Promise</span><span class="cm-operator">&lt;</span><span class="cm-type">number</span><span class="cm-operator">&gt;</span>): <span class="cm-type">Promise</span><span class="cm-operator">&lt;</span><span class="cm-type">number</span><span class="cm-operator">&gt;</span> {
+  <span class="cm-keyword">return</span> <span class="cm-number">2</span> <span class="cm-operator">*</span> <span class="cm-keyword">await</span> <span class="cm-variable-2">x</span>;
+}
+
+<span class="cm-variable">asyncDouble</span>(<span class="cm-variable">Promise</span>.<span class="cm-property">resolve</span>(<span class="cm-number">5</span>));</pre></div><div aria-describedby="#hint-8" class="
+        cursor-pointer flex focusable group items-center
+        -m-1.5 p-1.5 rounded space-x-2
+        max-w-max
+      " tabindex="0"><h6 class="font-bold inline-block text-muted tracking-wider type-code-sm uppercase"><svg aria-label="Asyncronous Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    tone-cautious text-muted -mr-1 top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Asyncronous Icon</title><g aria-hidden="true"><g fill="none" fill-rule="evenodd"><path d="M13.5 18.5a9.2 9.2 0 115-12m-12.1 12a9.2 9.2 0 1112.1-4.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23.2 16.2c-.4 0-.7.4-.7.8v4.4l-8.3-8.2a.8.8 0 00-1-.1c-.3.3-.3.8 0 1v.1l8.2 8.3H17a.8.8 0 000 1.5h6.2l.5-.1.1-.2c.2-.1.2-.3.2-.5V17c0-.4-.3-.8-.8-.8z" fill="currentColor" fill-rule="nonzero"></path><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 3.8V10H5.2"></path></g></g></svg> Async Result:</h6></div><div aria-hidden="true" class="
+        max-w-xs tooltip tone-accent tone-as-loud bg-base text-base
+        z-10
+        hidden
+        
+      " data-show="false" id="hint-8" role="tooltip" style="position: absolute; inset: auto auto 0px 0px; transform: translate3d(629px, 172px, 0px);" data-popper-reference-hidden="true" data-popper-escaped="true" data-popper-placement="top"><p class="flex flex-col"><strong class="text-strong">Asyncronous Result</strong><span>This result will wait up to <em>3000ms</em> for a response from the code before returning.</span></p><span class="tooltip-arrow" style="position: absolute; left: 0px; transform: translate3d(0px, 0px, 0px);"></span></div><div class="
+      text-muted
+      tone-positive
+    "><pre>{fulfilled: 10}<svg aria-label="Pass Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+      tone-positive tone-as-loud
+      bg-control h-em ml-2
+      rounded-full text-control top-[0.2em] w-em
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Pass Icon</title><g aria-hidden="true"><path d="M8.75 17.882l-4.359-4.359a.75.75 0 0 1 1.06-1.06l4.006 4.005 9.005-9.006a.75.75 0 0 1 1.061 1.061l-9.359 9.359a1 1 0 0 1-1.414 0z"></path></g></svg></pre></div><div class="text-muted type-code-sm"></div><div class="flex sm-down:flex-col sm-down:space-y-2"></div></div></div></div></li><li class="
+          step
+          finished-step
+        "><div class="
+      copy relative tone-positive
+      
+      bg-base block p-2 rounded-sm sm:rounded text-base
+      text-sm sm:text-md
+      sm:p-4
+      -mx-2 sm:-mx-4
+      mb-4 bg-back text-base
+    "><p>Here's a code problem:</p></div><div class="mb-4 space-y-4"><div class="copy type-code text-muted"><p>The async function below has a return type of <code>number</code>.
+That's a type error: async functions must always have a return type of <code>Promise&lt;SomeOtherType&gt;</code>.
+Wrap the return type in <code>Promise</code> to fix the type error.
+(You only need to change the return type; the rest of the function is correct.)</p>
+</div></div><div class="space-y-2 text-base type-code"><div class="bg-base -mx-4 p-4 md:rounded-md shadow space-y-4"><div class="
+          my-4
+          finished
+          
+        " style="max-width: calc(100% + 1rem);"><div class=""><div class="type-code"><textarea style="display: none;"></textarea><div class="CodeMirror cm-s-execprog-readonly CodeMirror-wrap" translate="no" style="height: 178px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 35px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" autocorrect="off" autocapitalize="none" spellcheck="false" readonly="readonly" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; pointer-events: none;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; pointer-events: none;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: 0px; border-right-width: 50px; min-height: 80px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 24px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;" aria-hidden="true"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">async</span> <span class="cm-keyword">function</span> <span class="cm-def">asyncDouble</span>(<span class="cm-def">x</span>: <span class="cm-type">Promise</span><span class="cm-operator">&lt;</span><span class="cm-type">number</span><span class="cm-operator">&gt;</span>): <span class="cm-type">Promise</span><span class="cm-operator">&lt;</span><span class="cm-type">number</span><span class="cm-operator">&gt;</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;" aria-hidden="true"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"> &nbsp;<span class="cm-keyword">return</span> <span class="cm-number">2</span> <span class="cm-operator">*</span> <span class="cm-keyword">await</span> <span class="cm-variable-2">x</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;" aria-hidden="true"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 80px;"></div><div class="CodeMirror-gutters" style="height: 130px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></div></div></div><div class="ml-px"><div class="type-code"><textarea style="display: none;"></textarea><div class="CodeMirror cm-s-execprog-readonly CodeMirror-wrap" translate="no" style="height: 34px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 35px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" autocorrect="off" autocapitalize="none" spellcheck="false" readonly="readonly" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; pointer-events: none;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; pointer-events: none;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; margin-bottom: 0px; border-right-width: 50px; min-height: 32px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 24px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;" aria-hidden="true"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-variable">asyncDouble</span>(<span class="cm-variable">Promise</span>.<span class="cm-property">resolve</span>(<span class="cm-number">5</span>));</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 32px;"></div><div class="CodeMirror-gutters" style="height: 82px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div></div></div><div class="space-y-2"><div aria-describedby="#hint-9" class="
+        cursor-pointer flex focusable group items-center
+        -m-1.5 p-1.5 rounded space-x-2
+        max-w-max
+      " tabindex="0"><h6 class="font-bold inline-block text-muted tracking-wider type-code-sm uppercase"><svg aria-label="Asyncronous Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    tone-cautious text-muted -mr-1 top-[0.2em]
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Asyncronous Icon</title><g aria-hidden="true"><g fill="none" fill-rule="evenodd"><path d="M13.5 18.5a9.2 9.2 0 115-12m-12.1 12a9.2 9.2 0 1112.1-4.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23.2 16.2c-.4 0-.7.4-.7.8v4.4l-8.3-8.2a.8.8 0 00-1-.1c-.3.3-.3.8 0 1v.1l8.2 8.3H17a.8.8 0 000 1.5h6.2l.5-.1.1-.2c.2-.1.2-.3.2-.5V17c0-.4-.3-.8-.8-.8z" fill="currentColor" fill-rule="nonzero"></path><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M10 3.8V10H5.2"></path></g></g></svg> Async Result:</h6></div><div aria-hidden="true" class="
+        max-w-xs tooltip tone-accent tone-as-loud bg-base text-base
+        z-10
+        hidden
+        
+      " data-show="false" id="hint-9" role="tooltip" style="position: absolute; inset: auto auto 0px 0px; transform: translate3d(629px, 725px, 0px);" data-popper-reference-hidden="true" data-popper-escaped="true" data-popper-placement="top"><p class="flex flex-col"><strong class="text-strong">Asyncronous Result</strong><span>This result will wait up to <em>3000ms</em> for a response from the code before returning.</span></p><span class="tooltip-arrow" style="position: absolute; left: 0px; transform: translate3d(0px, 0px, 0px);"></span></div><div class="
+          flex justify-between flex-col space-y-4
+        "><div class="flex-0"><dl class="flow-root type-code-small"><div class="flex"><dt class="flex-shrink-0 font-bold uppercase w-16">Goal:</dt><dd><pre>{fulfilled: 10}</pre></dd></div><div class="flex"><dt class="flex-shrink-0 font-bold uppercase w-16">Yours:</dt><dd><pre><span class="
+    text-muted
+    tone-positive
+    
+  ">{fulfilled: 10}<svg aria-label="Pass Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    
+    
+      tone-positive tone-as-loud
+      bg-control h-em ml-2
+      rounded-full text-control top-[0.2em] w-em
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Pass Icon</title><g aria-hidden="true"><path d="M8.75 17.882l-4.359-4.359a.75.75 0 0 1 1.06-1.06l4.006 4.005 9.005-9.006a.75.75 0 0 1 1.061 1.061l-9.359 9.359a1 1 0 0 1-1.414 0z"></path></g></svg></span></pre></dd></div></dl></div><div class="flex-1 pb-1"></div></div><label class="
+    flex items-center -m-2 px-2 py-1 rounded-sm
+    space-x-2 type-code hover:bg-front
+  "><input type="checkbox"><span>Show Author's Answer</span></label></div></div></div></li></ul></div></main><div class="reference tone-neutral"><button class="
+
+    button tone-accent
+    border-2 border-control cursor-pointer font-bold font-mono group
+    inline-flex items-center justify-between leading-none no-underline rounded
+    space-x-2 whitespace-nowrap
+    hover:shadow-md
+    focusable
+    bg-transparent
+    px-4 py-2
+    text-md
+    flex-row-reverse space-x-reverse
+    bg-base hover:bg-front bottom-4 fixed right-4 shadow-lg z-50
+  " tabindex="0" type="button"><span>Show Reference</span><svg aria-label="Reference Icon" class="
+    align-baseline fill-current inline-block relative
+    
+    
+    h-em w-em
+    opacity-50 group-hover:opacity-100
+    
+  " height="24" role="img" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Reference Icon</title><g aria-hidden="true"><path d="M16.5 0a1.5 1.5 0 0 1 1.06.44l3 3A1.5 1.5 0 0 1 21 4.5v18a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 22.5v-21A1.5 1.5 0 0 1 4.5 0zm-1.25 1.5H4.5v21h15V5.749L16 5.75a.75.75 0 0 1-.743-.648L15.25 5V1.5zm-2 16.5a.75.75 0 1 1 0 1.5h-6.5a.75.75 0 1 1 0-1.5h6.5zm3-3a.75.75 0 1 1 0 1.5h-9.5a.75.75 0 1 1 0-1.5h9.5zm.345-7.585l.181.186.818.873a1.5 1.5 0 0 1 .101 1.932l-.1.12-.819.873c-2.566 2.738-6.732 2.8-9.37.186l-.182-.186-.818-.873a1.5 1.5 0 0 1-.101-1.932l.1-.12.819-.873c2.566-2.738 6.732-2.8 9.37-.186zM8.49 8.45l-.173.176L7.5 9.5l.818.873c1.977 2.11 5.148 2.168 7.191.176l.173-.176.818-.873-.818-.873c-1.977-2.11-5.148-2.168-7.191-.176zm5.153-.78l.06.061a2.547 2.547 0 0 1 0 3.536 2.368 2.368 0 0 1-3.348.06l-.06-.06a2.547 2.547 0 0 1 0-3.536 2.368 2.368 0 0 1 3.348-.06zm-2.269 1.102a1.047 1.047 0 0 0-.093 1.348l.074.086.041.042a.868.868 0 0 0 1.228-.022c.363-.377.389-.958.078-1.363l-.078-.09-.022-.023a.868.868 0 0 0-1.228.022zM16.75 1.75v2.5l2.499-.001L16.75 1.75z"></path></g></svg></button></div></div></div>
+      
+    </body></html>
